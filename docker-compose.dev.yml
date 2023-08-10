@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www
+      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    container_name: cutcode_shop_nginx
+
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    container_name: cutcode_shop_app
+
+  db:
+    image: mysql:8.0.33
+    restart: always
+    volumes:
+      - ./tmp/db/:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=shop
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 8110:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: cutcode_shop_db
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8090:80
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
