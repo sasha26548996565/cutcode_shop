@@ -171,6 +171,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+
+        App\Providers\ViewServiceProvider::class,
     ])->toArray(),
 
     /*
