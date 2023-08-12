@@ -4,22 +4,35 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Traits\HasThumbnail;
+use App\Models\Traits\SlugCountable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SlugCountable, HasThumbnail;
+
+    private const COUNT_SHOW_INDEX = 6;
 
     protected $fillable = [
         'title',
         'slug',
         'price',
         'thumbnail',
-        'brand_id'
+        'brand_id',
+        'on_index_page',
+        'sorting',
     ];
+
+    protected function thumbnailDirectory(): string
+    {
+        return 'products';
+    }
 
     public function brand(): BelongsTo
     {
@@ -31,8 +44,17 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'category_products', 'product_id', 'category_id');
     }
 
-    public function getCountSlug(string $slug): int
+    public function scopeIndexPage(Builder $query): void
     {
-        return self::where('slug', $slug)->count();
+        $query->where('on_index_page', true)
+            ->orderBy('sorting')
+            ->limit(self::COUNT_SHOW_INDEX);
+    }
+
+    public function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value / 100
+        );
     }
 }

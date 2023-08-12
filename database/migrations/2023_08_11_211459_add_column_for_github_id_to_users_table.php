@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('github_id')->nullable();
+            $table->string('github_id')->nullable()->after('email');
         });
     }
 

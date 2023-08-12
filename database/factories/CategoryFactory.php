@@ -16,6 +16,8 @@ class CategoryFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'thumbnail' => $filename,
+            'on_index_page' => $this->faker->boolean(),
+            'sorting' => $this->faker->numberBetween(1, 999),
         ];
     }
 }

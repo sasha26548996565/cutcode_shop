@@ -13,9 +13,7 @@
         @vite(['resources/css/app.css', 'resources/sass/main.sass', 'resources/js/app.js'])
     </head>
     <body>
-        @if (session()->has('message'))
-            {{ session()->get('message') }}
-        @endif
+        @include('partials.flash')
         <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
             <div class="container">
        

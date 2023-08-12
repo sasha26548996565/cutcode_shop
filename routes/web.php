@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\Auth\Socialites\GitHubController;
+use App\Http\Controllers\ThumbnailController;
 
 Route::get('/', IndexController::class)->name('index');
 
@@ -37,3 +38,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', LogoutController::class)->name('logout');
 });
+
+Route::get('/storage/images/{directory}/{method}/{size}/{file}', ThumbnailController::class)
+    ->where('method', 'resize|crop|fit')
+    ->where('size', '\d+x\d+')
+    ->name('thumbnail');
