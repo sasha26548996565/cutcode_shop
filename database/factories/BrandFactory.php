@@ -9,13 +9,9 @@ class BrandFactory extends Factory
 {
     public function definition(): array
     {
-        $filename = uniqid('thumbnail_', true) . '.jpg';
-
-        $image = $this->faker->image(null, 50, 50);
-        Storage::disk('public')->put($filename, file_get_contents($image));
         return [
             'title' => $this->faker->company(),
-            'thumbnail' => $filename,
+            'thumbnail' => $this->faker->image('storage/app/public', 100, 100, null, false),
             'on_index_page' => $this->faker->boolean(),
             'sorting' => $this->faker->numberBetween(1, 999),
         ];

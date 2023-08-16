@@ -4,13 +4,22 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\ThumbnailPicker;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ThumbnailController extends Controller
 {
+    private ThumbnailPicker $thumbnailPicker;
+
+    public function __construct(ThumbnailPicker $thumbnailPicker)
+    {
+        $this->thumbnailPicker = $thumbnailPicker;
+    }
+
     public function __invoke(string $directory, string $method, string $size, string $file): BinaryFileResponse
     {
         abort_if(
@@ -19,24 +28,8 @@ class ThumbnailController extends Controller
             'Размер недействителен!'
         );
 
-        $storage = Storage::disk('images');
-        $realPath = "$directory/$file";
-        $newPath = "$directory/$method/$size";
-        $resultPath = "$newPath/$file";
+        $path = $this->thumbnailPicker->generate($directory, $method, $size, $file);
 
-        if ($storage->exists($newPath) == false)
-        {
-            $storage->makeDirectory($newPath);
-        }
-
-        if ($storage->exists($resultPath) == false)
-        {
-            $image = Image::make($storage->path($realPath));
-            [$width, $height] = explode('x', $size);
-            $image->{$method}($width, $height);
-            $image->save($storage->path($resultPath));
-        }
-
-        return response()->file($storage->path($resultPath));
+        return response()->file($path);
     }
 }
