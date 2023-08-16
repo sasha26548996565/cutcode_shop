@@ -39,14 +39,12 @@ class ThumbnailPicker
 
     private function trySave(Filesystem $storage, string $path, string $size, string $method, string $file): void
     {
-        if ($storage->exists($path))
+        if ($storage->exists($path) == false)
         {
-            throw new \Exception('File already exists!');
+            $image = Image::make($storage->path($file));
+            [$width, $height] = explode('x', $size);
+            $image->{$method}($width, $height);
+            $image->save($storage->path($path));
         }
-
-        $image = Image::make($storage->path($file));
-        [$width, $height] = explode('x', $size);
-        $image->{$method}($width, $height);
-        $image->save($storage->path($path));
     }
 }
