@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
@@ -11,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     public const HOME = '/';
+    private array $apiRoutePaths = [
+        'routes/api.php',
+    ];
+
+    private array $webRoutePaths = [
+        'routes/web.php',
+        'routes/auth.php',
+        'routes/catalog.php',
+    ];
 
     public function boot(): void
     {
@@ -19,12 +30,27 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function () {
+            $this->apiRegister($this->apiRoutePaths);
+            $this->webRegister($this->webRoutePaths);
+        });
+    }
+
+    private function apiRegister(array $paths): void
+    {
+        foreach ($paths as $filePath)
+        {
             Route::middleware('api')
                 ->prefix('api')
-                ->group(base_path('routes/api.php'));
+                ->group(base_path($filePath));
+        }
+    }
 
+    private function webRegister(array $paths): void
+    {
+        foreach ($paths as $filePath)
+        {
             Route::middleware('web')
-                ->group(base_path('routes/web.php'));
-        });
+                ->group(base_path($filePath));
+        }
     }
 }
