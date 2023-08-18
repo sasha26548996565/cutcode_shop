@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Traits\HasThumbnail;
+use App\Models\Traits\Filterable;
+use App\Models\Traits\ThumbnailGeneratable;
 use App\Models\Traits\SlugCountable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
-    use HasFactory, SlugCountable, HasThumbnail;
+    use HasFactory, SlugCountable, ThumbnailGeneratable, Filterable;
 
     private const COUNT_SHOW_INDEX = 6;
 

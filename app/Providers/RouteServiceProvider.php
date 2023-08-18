@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     public const HOME = '/';
+
     private array $apiRoutePaths = [
         'routes/api.php',
     ];
