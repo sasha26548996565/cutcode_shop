@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => 'e7e0e5b150500ece399a046789761ae30919d2b2',
+        'reference' => '4240f3b9f1c0145193d0f1a6f87b3d2825c17ebf',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -391,7 +391,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => 'e7e0e5b150500ece399a046789761ae30919d2b2',
+            'reference' => '4240f3b9f1c0145193d0f1a6f87b3d2825c17ebf',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1000,6 +1000,15 @@
             'install_path' => __DIR__ . '/../spatie/backtrace',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/data-transfer-object' => array(
+            'pretty_version' => '3.9.1',
+            'version' => '3.9.1.0',
+            'reference' => '1df0906c4e9e3aebd6c0506fd82c8b7d5548c1c8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/data-transfer-object',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'spatie/flare-client-php' => array(
             'pretty_version' => '1.4.2',

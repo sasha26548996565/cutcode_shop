@@ -63,12 +63,11 @@ class Product extends Model
         );
     }
 
-    #[SearchUsingPrefix(['id'])]
-    #[SearchUsingFullText(['title', 'text'])]
+    #[SearchUsingPrefix(['title'])]
+    #[SearchUsingFullText(['text'])]
     public function toSearchableArray(): array
     {
         return [
-            'id' => $this->id,
             'title' => $this->title,
             'text' => $this->text,
         ];

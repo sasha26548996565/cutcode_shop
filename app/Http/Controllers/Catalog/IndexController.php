@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Catalog;
 
+use App\DTO\FilterDTO;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
@@ -19,13 +20,13 @@ class IndexController extends Controller
 
     public function __invoke(FilterRequest $request, ?Category $category): View
     {
-        $params = $request->validated();
+        $params = FilterDTO::formRequest($request->validated());
         $filter = app()->make(ProductFilter::class, array_filter(['queryParams' => [
-            'priceFrom' => $params['filters']['price']['from'] ?? null,
-            'priceTo' => $params['filters']['price']['to'] ?? null,
-            'brands' => $params['filters']['brands'] ?? null,
+            'priceFrom' => $params->priceFrom,
+            'priceTo' => $params->priceTo,
+            'brands' => $params->brands,
             'categoryId' => $category?->id,
-            'sort' => $params['sort'] ?? null,
+            'sort' => $params->sort,
         ]]));
 
         $categories = Category::select(['id', 'title', 'slug', 'thumbnail'])
@@ -36,7 +37,7 @@ class IndexController extends Controller
             ->latest()
             ->get();
 
-        $products = Product::search($params['search'] ?? null)
+        $products = Product::search($params->search)
             ->query(function (Builder $query) use ($filter) {
                 $query->select(['id', 'title', 'slug', 'thumbnail', 'price'])
                     ->filter($filter);

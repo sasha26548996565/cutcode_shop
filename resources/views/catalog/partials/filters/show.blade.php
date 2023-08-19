@@ -1,6 +1,7 @@
 <aside class="basis-2/5 xl:basis-1/4">
     <form class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-10 p-6 2xl:p-8 rounded-2xl bg-card">
-        @include('catalog.partials.filters.hidden-inputs')
+        @include('catalog.partials.sort.hidden-inputs')
+        @include('partials.search.hidden-inputs')
         <!-- Filter item -->
         <div>
             <h5 class="mb-4 text-sm 2xl:text-md font-bold">Цена</h5>

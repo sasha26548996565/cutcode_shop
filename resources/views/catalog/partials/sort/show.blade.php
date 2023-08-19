@@ -2,6 +2,8 @@
     <span class="text-body text-xxs sm:text-xs">Сортировать по</span>
     <form x-ref="sortForm" action="{{ route('catalog.index', $category) }}">
         @include('catalog.partials.filters.hidden-inputs')
+        @include('partials.search.hidden-inputs')
+        
         <select
             name="sort"
             x-on:change="$refs.sortForm.submit()"

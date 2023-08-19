@@ -89,6 +89,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
+            'Spatie\\DataTransferObject\\' => 26,
             'Spatie\\Backtrace\\' => 17,
         ),
         'R' => 
@@ -333,6 +334,10 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'Spatie\\FlareClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/flare-client-php/src',
+        ),
+        'Spatie\\DataTransferObject\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/data-transfer-object/src',
         ),
         'Spatie\\Backtrace\\' => 
         array (
@@ -5711,6 +5716,24 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'Spatie\\Backtrace\\CodeSnippet' => __DIR__ . '/..' . '/spatie/backtrace/src/CodeSnippet.php',
         'Spatie\\Backtrace\\File' => __DIR__ . '/..' . '/spatie/backtrace/src/File.php',
         'Spatie\\Backtrace\\Frame' => __DIR__ . '/..' . '/spatie/backtrace/src/Frame.php',
+        'Spatie\\DataTransferObject\\Arr' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Arr.php',
+        'Spatie\\DataTransferObject\\Attributes\\CastWith' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Attributes/CastWith.php',
+        'Spatie\\DataTransferObject\\Attributes\\DefaultCast' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Attributes/DefaultCast.php',
+        'Spatie\\DataTransferObject\\Attributes\\MapFrom' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Attributes/MapFrom.php',
+        'Spatie\\DataTransferObject\\Attributes\\MapTo' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Attributes/MapTo.php',
+        'Spatie\\DataTransferObject\\Attributes\\Strict' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Attributes/Strict.php',
+        'Spatie\\DataTransferObject\\Caster' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Caster.php',
+        'Spatie\\DataTransferObject\\Casters\\ArrayCaster' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Casters/ArrayCaster.php',
+        'Spatie\\DataTransferObject\\Casters\\DataTransferObjectCaster' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Casters/DataTransferObjectCaster.php',
+        'Spatie\\DataTransferObject\\Casters\\EnumCaster' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Casters/EnumCaster.php',
+        'Spatie\\DataTransferObject\\DataTransferObject' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/DataTransferObject.php',
+        'Spatie\\DataTransferObject\\Exceptions\\InvalidCasterClass' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Exceptions/InvalidCasterClass.php',
+        'Spatie\\DataTransferObject\\Exceptions\\UnknownProperties' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Exceptions/UnknownProperties.php',
+        'Spatie\\DataTransferObject\\Exceptions\\ValidationException' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Exceptions/ValidationException.php',
+        'Spatie\\DataTransferObject\\Reflection\\DataTransferObjectClass' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Reflection/DataTransferObjectClass.php',
+        'Spatie\\DataTransferObject\\Reflection\\DataTransferObjectProperty' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Reflection/DataTransferObjectProperty.php',
+        'Spatie\\DataTransferObject\\Validation\\ValidationResult' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Validation/ValidationResult.php',
+        'Spatie\\DataTransferObject\\Validator' => __DIR__ . '/..' . '/spatie/data-transfer-object/src/Validator.php',
         'Spatie\\FlareClient\\Api' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Api.php',
         'Spatie\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/HasContext.php',
         'Spatie\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/UsesTime.php',
