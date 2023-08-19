@@ -10,7 +10,6 @@ use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\ProductFilter;
-use Illuminate\Database\Eloquent\Builder;
 use App\Http\Requests\Catalog\FilterRequest;
 
 class IndexController extends Controller

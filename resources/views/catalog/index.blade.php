@@ -28,6 +28,7 @@
             <!-- Filters -->
             <aside class="basis-2/5 xl:basis-1/4">
                 <form class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-10 p-6 2xl:p-8 rounded-2xl bg-card">
+                    <input type="hidden" name="sort" value="{{ request('sort') }}">
                     <!-- Filter item -->
                     <div>
                         <h5 class="mb-4 text-sm 2xl:text-md font-bold">Цена</h5>
@@ -145,6 +146,14 @@
                     <div x-data="{}" class="flex flex-col sm:flex-row sm:items-center gap-3">
                         <span class="text-body text-xxs sm:text-xs">Сортировать по</span>
                         <form x-ref="sortForm" action="{{ route('catalog.index', $category) }}">
+                            @foreach (request('filters.brands') as $brand)
+                                <input type="hidden" name="filters[brands][{{ $brand }}]" value="{{ $brand }}">
+                            @endforeach
+                            @if (request('filters.price'))
+                                <input type="hidden" name="filters[price][from]" value="{{ request('filters.price.from') }}">
+                                <input type="hidden" name="filters[price][to]" value="{{ request('filters.price.to') }}">
+                            @endif
+                            
                             <select
                                 name="sort"
                                 x-on:change="$refs.sortForm.submit()"
