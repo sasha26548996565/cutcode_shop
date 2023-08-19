@@ -146,9 +146,11 @@
                     <div x-data="{}" class="flex flex-col sm:flex-row sm:items-center gap-3">
                         <span class="text-body text-xxs sm:text-xs">Сортировать по</span>
                         <form x-ref="sortForm" action="{{ route('catalog.index', $category) }}">
-                            @foreach (request('filters.brands') as $brand)
-                                <input type="hidden" name="filters[brands][{{ $brand }}]" value="{{ $brand }}">
-                            @endforeach
+                            @if (request('filter.brands'))
+                                @foreach (request('filters.brands') as $brand)
+                                    <input type="hidden" name="filters[brands][{{ $brand }}]" value="{{ $brand }}">
+                                @endforeach
+                            @endif
                             @if (request('filters.price'))
                                 <input type="hidden" name="filters[price][from]" value="{{ request('filters.price.from') }}">
                                 <input type="hidden" name="filters[price][to]" value="{{ request('filters.price.to') }}">
