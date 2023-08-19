@@ -17,7 +17,8 @@ class FilterRequest extends FormRequest
             'filters.price.from' => ['nullable', 'numeric'],
             'filters.price.to' => ['nullable', 'numeric'],
             'filters.brands' => ['nullable', 'array'],
-            'sort' => ['nullable', 'string']
+            'sort' => ['nullable', 'string'],
+            'search' => ['nullable', 'string'],
         ];
     }
 }

@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
 use App\Models\Traits\Filterable;
-use App\Models\Traits\ThumbnailGeneratable;
 use App\Models\Traits\SlugCountable;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\ThumbnailGeneratable;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Laravel\Scout\Attributes\SearchUsingFullText;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
-    use HasFactory, SlugCountable, ThumbnailGeneratable, Filterable;
+    use HasFactory, SlugCountable, ThumbnailGeneratable, Filterable, Searchable;
 
     private const COUNT_SHOW_INDEX = 6;
 
@@ -25,6 +28,7 @@ class Product extends Model
         'slug',
         'price',
         'thumbnail',
+        'text',
         'brand_id',
         'on_index_page',
         'sorting',
@@ -57,5 +61,16 @@ class Product extends Model
         return Attribute::make(
             get: fn ($value) => $value / 100
         );
+    }
+
+    #[SearchUsingPrefix(['id'])]
+    #[SearchUsingFullText(['title', 'text'])]
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'text' => $this->text,
+        ];
     }
 }

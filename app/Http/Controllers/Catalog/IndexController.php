@@ -7,10 +7,11 @@ namespace App\Http\Controllers\Catalog;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
+use App\Http\Filters\ProductFilter;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Http\Filters\ProductFilter;
 use App\Http\Requests\Catalog\FilterRequest;
+use Illuminate\Database\Eloquent\Builder;
 
 class IndexController extends Controller
 {
@@ -35,8 +36,11 @@ class IndexController extends Controller
             ->latest()
             ->get();
 
-        $products = Product::select(['id', 'title', 'slug', 'thumbnail', 'price'])
-            ->filter($filter)
+        $products = Product::search($params['search'] ?? null)
+            ->query(function (Builder $query) use ($filter) {
+                $query->select(['id', 'title', 'slug', 'thumbnail', 'price'])
+                    ->filter($filter);
+            })
             ->paginate(self::PAGINATION_COUNT);
 
         return view('catalog.index', compact(

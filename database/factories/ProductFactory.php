@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Brand;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -13,6 +12,7 @@ class ProductFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'price' => $this->faker->numberBetween(10000, 10000000),
+            'text' => $this->faker->realText(),
             'brand_id' => Brand::get()->random()->id,
             'thumbnail' => $this->faker->image('storage/app/public', 100, 100, null, false),
             'on_index_page' => $this->faker->boolean(),
