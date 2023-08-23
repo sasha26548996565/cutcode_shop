@@ -21,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
     private array $webRoutePaths = [
         'routes/web.php',
         'routes/auth.php',
+        'routes/product.php',
         'routes/catalog.php',
     ];
 
