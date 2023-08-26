@@ -15,14 +15,11 @@ class Brand extends Model
 {
     use HasFactory, SlugCountable, ThumbnailGeneratable;
 
-    private const COUNT_SHOW_INDEX = 10;
-
     protected $fillable = [
         'title',
         'slug',
         'thumbnail',
         'on_index_page',
-        'sorting',
     ];
 
     public function products(): HasMany
@@ -33,12 +30,5 @@ class Brand extends Model
     protected function thumbnailDirectory(): string
     {
         return 'brands';
-    }
-
-    public function scopeIndexPage(Builder $query): void
-    {
-        $query->where('on_index_page', true)
-            ->orderBy('sorting')
-            ->limit(self::COUNT_SHOW_INDEX);
     }
 }

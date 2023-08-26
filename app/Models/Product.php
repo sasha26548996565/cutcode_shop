@@ -12,7 +12,6 @@ use App\Models\Traits\ThumbnailGeneratable;
 use Laravel\Scout\Attributes\SearchUsingPrefix;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Scout\Attributes\SearchUsingFullText;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -21,8 +20,6 @@ class Product extends Model
 {
     use HasFactory, SlugCountable, ThumbnailGeneratable, Filterable, Searchable;
 
-    private const COUNT_SHOW_INDEX = 6;
-
     protected $fillable = [
         'title',
         'slug',
@@ -30,8 +27,6 @@ class Product extends Model
         'thumbnail',
         'text',
         'brand_id',
-        'on_index_page',
-        'sorting',
     ];
 
     protected function thumbnailDirectory(): string
@@ -49,18 +44,17 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'category_products', 'product_id', 'category_id');
     }
 
-    public function scopeIndexPage(Builder $query): void
-    {
-        $query->where('on_index_page', true)
-            ->orderBy('sorting')
-            ->limit(self::COUNT_SHOW_INDEX);
-    }
-
     public function price(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => $value / 100
         );
+    }
+
+    public function properties(): BelongsToMany
+    {
+        return $this->belongsToMany(Property::class, 'product_properties', 'product_id', 'property_id')
+            ->withPivot('value');
     }
 
     #[SearchUsingPrefix(['title'])]

@@ -13,8 +13,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('thumbnail');
-            $table->boolean('on_index_page')->default(false);
-            $table->integer('sorting')->default(999);
             $table->timestamps();
         });
     }

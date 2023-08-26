@@ -15,8 +15,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('thumbnail');
             $table->unsignedBigInteger('price');
-            $table->boolean('on_index_page')->default(false);
-            $table->integer('sorting')->default(999);
 
             $table->foreignIdFor(Brand::class)
                 ->constrained()

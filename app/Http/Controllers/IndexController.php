@@ -13,9 +13,9 @@ class IndexController extends Controller
 {
     public function __invoke(): View
     {
-        $brands = Brand::indexPage()->get();
-        $categories = Category::indexPage()->get();
-        $products = Product::indexPage()->get();
+        $brands = Brand::latest()->get();
+        $categories = Category::latest()->get();
+        $products = Product::latest()->get();
         
         return view('index', compact('brands', 'categories', 'products'));
     }

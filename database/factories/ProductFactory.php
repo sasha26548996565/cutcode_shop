@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Brand;
@@ -15,8 +17,6 @@ class ProductFactory extends Factory
             'text' => $this->faker->realText(),
             'brand_id' => Brand::get()->random()->id,
             'thumbnail' => $this->faker->image('storage/app/public', 100, 100, null, false),
-            'on_index_page' => $this->faker->boolean(),
-            'sorting' => $this->faker->numberBetween(1, 999),
         ];
     }
 }

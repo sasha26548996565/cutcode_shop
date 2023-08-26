@@ -15,14 +15,10 @@ class Category extends Model
 {
     use HasFactory, SlugCountable, ThumbnailGeneratable;
 
-    private const COUNT_SHOW_INDEX = 10;
-
     protected $fillable = [
         'title',
         'slug',
         'thumbnail',
-        'on_index_page',
-        'sorting',
     ];
 
     public function products(): BelongsToMany
@@ -33,12 +29,5 @@ class Category extends Model
     protected function thumbnailDirectory(): string
     {
         return 'categories';
-    }
-
-    public function scopeIndexPage(Builder $query): void
-    {
-        $query->where('on_index_page', true)
-            ->orderBy('sorting')
-            ->limit(self::COUNT_SHOW_INDEX);
     }
 }

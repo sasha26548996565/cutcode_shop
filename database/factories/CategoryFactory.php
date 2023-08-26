@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -11,8 +13,6 @@ class CategoryFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'thumbnail' => $this->faker->image('storage/app/public', 100, 100, null, false),
-            'on_index_page' => $this->faker->boolean(),
-            'sorting' => $this->faker->numberBetween(1, 999),
         ];
     }
 }
