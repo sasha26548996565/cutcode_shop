@@ -1,20 +1,21 @@
 <?php
 
 use App\Models\Brand;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\CustomMigrations\BaseMigration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
-return new class extends Migration
+return new class extends BaseMigration
 {
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->fullText();
             $table->string('slug')->unique();
             $table->string('thumbnail');
             $table->unsignedBigInteger('price');
+            $table->text('text')->fullText();
 
             $table->foreignIdFor(Brand::class)
                 ->constrained()
@@ -27,9 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        if (app()->isLocal())
-        {
-            Schema::dropIfExists('products');
-        }
+        $this->tryDropTable('products');
     }
 };

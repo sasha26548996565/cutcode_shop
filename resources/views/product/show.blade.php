@@ -7,8 +7,8 @@
     <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
         <li><a href="{{ route('index') }}" class="text-body hover:text-pink text-xs">Главная</a></li>
         <li><a href="{{ route('catalog.index') }}" class="text-body hover:text-pink text-xs">Каталог</a></li>
-        <li><a href="catalog.html" class="text-body hover:text-pink text-xs">Мыши</a></li>
-        <li><span class="text-body text-xs">SteelSeries Aerox 3 Snow</span></li>
+        <li><a href="catalog.html" class="text-body hover:text-pink text-xs">CATEGORIES</a></li>
+        <li><span class="text-body text-xs">{{ $product->title }}</span></li>
     </ul>
 
     <!-- Main product -->
@@ -75,25 +75,17 @@
                 <!-- Add to cart -->
                 <form class="space-y-8 mt-8">
                     <div class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4">
-                        <div class="flex flex-col gap-2">
-                            <label for="filter-item-1" class="cursor-pointer text-body text-xxs font-medium">Цвет</label>
-                            <select id="filter-item-1"
-                                class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
-                                <option value="Белый" class="text-dark">Белый</option>
-                                <option value="Чёрный" class="text-dark">Чёрный</option>
-                                <option value="Синий" class="text-dark">Синий</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <label for="filter-item-2" class="cursor-pointer text-body text-xxs font-medium">Размер
-                                (хват)</label>
-                            <select id="filter-item-2"
-                                class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
-                                <option value="Маленький" class="text-dark">Маленький</option>
-                                <option value="Средний" class="text-dark">Средний</option>
-                                <option value="Большой" class="text-dark">Большой</option>
-                            </select>
-                        </div>
+                        @foreach ($options as $option => $values)
+                            <div class="flex flex-col gap-2">
+                                <label for="filter-item-1" class="cursor-pointer text-body text-xxs font-medium">{{ $option }}</label>
+                                <select id="filter-item-1"
+                                    class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
+                                    @foreach ($values as $value)
+                                        <option value="{{ $value->id }}" class="text-dark">{{ $value->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="flex flex-wrap items-center gap-3 xs:gap-4">
                         <div class="flex items-stretch h-[54px] lg:h-[72px] gap-2">
@@ -136,10 +128,7 @@
         <h2 class="mb-12 text-lg lg:text-[42px] font-black">Просмотренные товары</h2>
         <!-- Products list -->
         <div class="products grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12">
-            @@include('parts/products/1.html')
-            @@include('parts/products/2.html')
-            @@include('parts/products/3.html')
-            @@include('parts/products/4.html')
+            @each('catalog.partials.product', $alsoProducts, 'product')
         </div>
     </section>
 

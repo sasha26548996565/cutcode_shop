@@ -57,6 +57,11 @@ class Product extends Model
             ->withPivot('value');
     }
 
+    public function optionValues(): BelongsToMany
+    {
+        return $this->belongsToMany(OptionValue::class, 'option_value_products', 'product_id', 'option_value_id');
+    }
+
     #[SearchUsingPrefix(['title'])]
     #[SearchUsingFullText(['text'])]
     public function toSearchableArray(): array

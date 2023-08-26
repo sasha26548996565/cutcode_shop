@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Category;
+use App\CustomMigrations\BaseMigration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
-return new class extends Migration
+return new class extends BaseMigration
 {
     public function up(): void
     {
@@ -28,9 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        if (app()->isLocal())
-        {
-            Schema::dropIfExists('category_products');
-        }
+        $this->tryDropTable('category_products');
     }
 };

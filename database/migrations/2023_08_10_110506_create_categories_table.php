@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use App\CustomMigrations\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class extends BaseMigration
 {
     public function up(): void
     {
@@ -19,9 +19,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        if (app()->isLocal())
-        {
-            Schema::dropIfExists('categories');
-        }
+        $this->tryDropTable('categories');
     }
 };

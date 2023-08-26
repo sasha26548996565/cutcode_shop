@@ -12,6 +12,19 @@ class ShowController extends Controller
 {
     public function __invoke(Product $product): View
     {
-        return view('product.show', compact('product'));
+        $product->load(['optionValues.option']);
+        $alsoProducts = Product::whereIn('id', collect(session()->get('also'))->except($product->id))->get();
+
+        $options = $product->optionValues->mapToGroups(function ($optionValue) {
+            return [$optionValue->option->title => $optionValue];
+        });
+
+        session()->put('also.' . $product->id, $product->id);
+
+        return view('product.show', compact(
+            'product',
+            'alsoProducts',
+            'options',
+        ));
     }
 }
