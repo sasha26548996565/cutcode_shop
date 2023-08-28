@@ -11,11 +11,13 @@ use Illuminate\Contracts\View\View;
 
 class IndexController extends Controller
 {
+    private const COUNT_PRODUCT = 12;
+
     public function __invoke(): View
     {
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
-        $products = Product::latest()->get();
+        $products = Product::latest()->take(self::COUNT_PRODUCT)->get();
         
         return view('index', compact('brands', 'categories', 'products'));
     }

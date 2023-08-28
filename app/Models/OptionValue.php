@@ -20,7 +20,7 @@ class OptionValue extends Model
 
     public function option(): BelongsTo
     {
-        return $this->belongsTo(OptionValue::class, 'option_id', 'id');
+        return $this->belongsTo(Option::class, 'option_id', 'id');
     }
 
     public function products(): BelongsToMany

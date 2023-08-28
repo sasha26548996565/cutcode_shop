@@ -11,6 +11,7 @@ class ProductFilter extends AbstractFilter
     private const PRICE_FROM = 'priceFrom';
     private const PRICE_TO = 'priceTo';
     private const BRANDS = 'brands';
+    private const OPTION_VALUES = 'optionValues';
     private const CATEGORY_ID = 'categoryId';
     private const SORT = 'sort';
     private const ALLOWED_SORTS = ['title', 'price'];
@@ -24,6 +25,7 @@ class ProductFilter extends AbstractFilter
             self::BRANDS => [$this, 'brands'],
             self::CATEGORY_ID => [$this, 'categoryId'],
             self::SORT => [$this, 'sort'],
+            self::OPTION_VALUES => [$this, 'optionValues']
         ];
     }
 
@@ -40,6 +42,13 @@ class ProductFilter extends AbstractFilter
     public function brands(Builder $query, array $brandIds): void
     {
         $query->whereIn('brand_id', $brandIds);
+    }
+
+    public function optionValues(Builder $query, array $optionValueIds): void
+    {
+        $query->whereHas('optionValues', function (Builder $query) use ($optionValueIds) {
+            $query->whereIn('option_values.id', $optionValueIds);
+        });
     }
 
     public function categoryId(Builder $query, int $categoryId): void

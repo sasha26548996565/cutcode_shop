@@ -26,6 +26,11 @@ class Category extends Model
         return $this->belongsToMany(Product::class, 'category_products', 'category_id', 'product_id');
     }
 
+    public function options(): BelongsToMany
+    {
+        return $this->belongsToMany(Option::class, 'option_categories', 'category_id', 'option_id');
+    }
+
     protected function thumbnailDirectory(): string
     {
         return 'categories';

@@ -17,6 +17,7 @@ class FilterRequest extends FormRequest
             'filters.price.from' => ['nullable', 'numeric'],
             'filters.price.to' => ['nullable', 'numeric'],
             'filters.brands' => ['nullable', 'array'],
+            'filters.optionValueIds' => ['nullable', 'array'],
             'sort' => ['nullable', 'string'],
             'search' => ['nullable', 'string'],
         ];

@@ -41,43 +41,21 @@
         </div>
         <!-- Filter item -->
         <div>
-            <h5 class="mb-4 text-sm 2xl:text-md font-bold">Цвет</h5>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-9">
-                <label for="filters-item-9" class="form-checkbox-label">Белый</label>
-            </div>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-10">
-                <label for="filters-item-10" class="form-checkbox-label">Чёрный</label>
-            </div>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-11">
-                <label for="filters-item-11" class="form-checkbox-label">Желтый</label>
-            </div>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-12">
-                <label for="filters-item-12" class="form-checkbox-label">Розовый</label>
-            </div>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-13">
-                <label for="filters-item-13" class="form-checkbox-label">Красный</label>
-            </div>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-14">
-                <label for="filters-item-14" class="form-checkbox-label">Серый</label>
-            </div>
-        </div>
-        <!-- Filter item -->
-        <div>
-            <h5 class="mb-4 text-sm 2xl:text-md font-bold">Подсветка</h5>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-7">
-                <label for="filters-item-7" class="form-checkbox-label">Без подсветки</label>
-            </div>
-            <div class="form-checkbox">
-                <input type="checkbox" id="filters-item-8">
-                <label for="filters-item-8" class="form-checkbox-label">З подсветкой</label>
-            </div>
+            @foreach ($options as $option)
+                <h5 class="mb-4 text-sm 2xl:text-md font-bold">{{ $option->title }}</h5>
+                @foreach ($option->optionValues as $value)
+                    <div class="form-checkbox">
+                        <input
+                            type="checkbox"
+                            name="filters[optionValueIds][{{ $value->id }}]"
+                            id="filters-item-{{ $value->id }}"
+                            value="{{ $value->id }}"
+                            @checked(request('filters.optionValueIds.' . $value->id))
+                        >
+                        <label for="filters-item-{{ $value->id }}" class="form-checkbox-label">{{ $value->title }}</label>
+                    </div>
+                @endforeach
+            @endforeach
         </div>
         <div>
             <button type="submit" class="w-full !h-16 btn btn-pink">Поиск</button>
