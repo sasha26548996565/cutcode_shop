@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Traits\ThumbnailGeneratable;
-use App\Models\Traits\SlugCountable;
+use App\Traits\Models\ThumbnailGeneratable;
+use App\Traits\Models\SlugCountable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 

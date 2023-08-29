@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Laravel\Scout\Searchable;
-use App\Models\Traits\Filterable;
-use App\Models\Traits\SlugCountable;
+use App\Traits\Models\Filterable;
+use App\Traits\Models\SlugCountable;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Traits\ThumbnailGeneratable;
+use App\Traits\Models\ThumbnailGeneratable;
 use Laravel\Scout\Attributes\SearchUsingPrefix;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Scout\Attributes\SearchUsingFullText;
