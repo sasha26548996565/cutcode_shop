@@ -10,16 +10,17 @@ use Illuminate\Contracts\View\View;
 
 class ShowController extends Controller
 {
-    public function __invoke(Product $product): View
+    public function __invoke(Product $product, ?int $optionValueId): View
     {
         $product->load(['optionValues.option']);
         $alsoProducts = Product::whereIn('id', collect(session()->get('also'))->except($product->id))->get();
-
-        $options = $product->optionValues->mapToGroups(function ($optionValue) {
-            return [$optionValue->option->title => $optionValue];
-        });
-
         session()->put('also.' . $product->id, $product->id);
+
+        $options = $product->optionValues->mapToGroups(function ($optionValue) use ($optionValueId) {
+            return [
+                $optionValue->option->title => $optionValue,
+            ];
+        });
 
         return view('product.show', compact(
             'product',
