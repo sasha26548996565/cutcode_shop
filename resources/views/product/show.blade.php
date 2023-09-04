@@ -81,8 +81,11 @@
                                 <select id="filter-item-1"
                                     class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
                                     @foreach ($values as $value)
-                                        <option value="{{ $value->id }}" class="text-dark"><a href="
-                                            {{ route('product.show', [$product, $value->id]) }}">{{ $value->title }}</a></option>
+                                        <option value="{{ $value->id }}" class="text-dark">
+                                            <a href="{{ route('product.show', $product) }}">
+                                                {{ $value->title }}
+                                            </a>
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>

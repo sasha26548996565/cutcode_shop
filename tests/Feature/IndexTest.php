@@ -12,5 +12,7 @@ class IndexTest extends TestCase
     {
         $response = $this->get(route('index'));
         $response->assertOk();
+        $response->assertViewIs('index');
+        $response->assertViewHasAll(['products', 'brands', 'categories']);
     }
 }
