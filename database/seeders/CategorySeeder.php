@@ -26,12 +26,7 @@ class CategorySeeder extends Seeder
                         'value' => ucfirst(fake()->word())
                     ];
                 })
-                ->hasAttached($optionValues, function () {
-                    return [
-                        'price' => fake()->numberBetween(10000, 1000000),
-                        'count' => fake()->numberBetween(1, 10),
-                    ];
-                })
+                ->hasAttached($optionValues)
             )->hasAttached($options)
         ->create();
     }

@@ -12,8 +12,6 @@ return new class extends BaseMigration
     {
         Schema::create('option_value_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('price');
-            $table->integer('count');
             $table->foreignIdFor(OptionValue::class)
                 ->constrained()
                 ->cascadeOnDelete()

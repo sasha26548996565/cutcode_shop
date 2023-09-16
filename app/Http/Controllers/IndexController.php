@@ -17,7 +17,10 @@ class IndexController extends Controller
     {
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
-        $products = Product::latest()->take(self::COUNT_PRODUCT)->get();
+        $products = Product::with(['brand', 'optionValues.option'])
+            ->latest()
+            ->take(self::COUNT_PRODUCT)
+            ->get();
         
         return view('index', compact('brands', 'categories', 'products'));
     }

@@ -24,6 +24,7 @@ class Product extends Model
         'title',
         'slug',
         'price',
+        'count',
         'thumbnail',
         'text',
         'brand_id',
@@ -59,8 +60,7 @@ class Product extends Model
 
     public function optionValues(): BelongsToMany
     {
-        return $this->belongsToMany(OptionValue::class, 'option_value_products', 'product_id', 'option_value_id')
-            ->withPivot('price');
+        return $this->belongsToMany(OptionValue::class, 'option_value_products', 'product_id', 'option_value_id');
     }
 
     #[SearchUsingPrefix(['title'])]

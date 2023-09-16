@@ -61,7 +61,8 @@
                     </li>
                 </ul>
                 <div class="flex items-baseline gap-4 mt-4">
-                    <div class="text-pink text-lg md:text-xl font-black">{{ $product->price }} ₽</div>
+                    {{-- {{ dd($optionValue) }} --}}
+                    <div class="text-pink text-lg md:text-xl font-black"> ₽</div>
                     <div class="text-body text-md md:text-lg font-bold line-through"></div>
                 </div>
                 <ul class="sm:max-w-[360px] space-y-2 mt-8">
@@ -71,20 +72,24 @@
                         </li>
                     @endforeach
                 </ul>
-
+                
                 <!-- Add to cart -->
-                <form class="space-y-8 mt-8">
+                <form class="space-y-8 mt-8" method="POST" action="{{ route('cart.add', $product) }}">
+                    @csrf
+
                     <div class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4">
-                        @foreach ($options as $option => $values)
+                        @foreach ($optionValues as $option => $values)
                             <div class="flex flex-col gap-2">
                                 <label for="filter-item-1" class="cursor-pointer text-body text-xxs font-medium">{{ $option }}</label>
                                 <select id="filter-item-1"
-                                    class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
+                                    class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
+                                    name="option_value_ids[]">
                                     @foreach ($values as $value)
-                                        <option value="{{ $value->id }}" class="text-dark">
-                                            <a href="{{ route('product.show', $product) }}">
-                                                {{ $value->title }}
-                                            </a>
+                                        <option
+                                            value="{{ $value->id }}"
+                                            class="text-dark"
+                                        >
+                                            {{ $value->title }}
                                         </option>
                                     @endforeach
                                 </select>

@@ -75,7 +75,8 @@ class IndexController extends Controller
     {
         return Product::search($search)
             ->query(function (Builder $query) use ($filter) {
-                $query->select(['id', 'title', 'slug', 'thumbnail', 'price'])
+                $query->with('brand', 'optionValues.option')
+                    ->select(['id', 'title', 'slug', 'thumbnail', 'price'])
                     ->filter($filter);
             })
             ->paginate($paginationCount);
