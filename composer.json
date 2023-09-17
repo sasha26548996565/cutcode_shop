@@ -36,7 +36,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/getTotalPrice.php",
+            "app/Helpers/getTotalQuantity.php"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [

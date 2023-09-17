@@ -38,6 +38,8 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        '2e6797692b370bc133ce6c1562c5c439' => __DIR__ . '/../..' . '/app/Helpers/getTotalPrice.php',
+        'dcbd9119a37a488cf0cdd811e435fcf7' => __DIR__ . '/../..' . '/app/Helpers/getTotalQuantity.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -569,9 +571,12 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
     );
 
     public static $classMap = array (
+        'App\\Actions\\Cart\\AddProduct' => __DIR__ . '/../..' . '/app/Actions/Cart/AddProduct.php',
         'App\\Actions\\ThumbnailPicker' => __DIR__ . '/../..' . '/app/Actions/ThumbnailPicker.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contracts\\Repositories\\CartContract' => __DIR__ . '/../..' . '/app/Contracts/Repositories/CartContract.php',
         'App\\CustomMigrations\\BaseMigration' => __DIR__ . '/../..' . '/app/CustomMigrations/BaseMigration.php',
+        'App\\DTO\\CartDTO' => __DIR__ . '/../..' . '/app/DTO/CartDTO.php',
         'App\\DTO\\FilterDTO' => __DIR__ . '/../..' . '/app/DTO/FilterDTO.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -580,6 +585,8 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Http\\Controllers\\Auth\\ResetController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetController.php',
         'App\\Http\\Controllers\\Auth\\SignUpController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/SignUpController.php',
         'App\\Http\\Controllers\\Auth\\Socialites\\GitHubController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/Socialites/GitHubController.php',
+        'App\\Http\\Controllers\\Cart\\AddController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/AddController.php',
+        'App\\Http\\Controllers\\Cart\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/IndexController.php',
         'App\\Http\\Controllers\\Catalog\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Catalog/IndexController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
@@ -590,6 +597,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Http\\Filters\\ProductFilter' => __DIR__ . '/../..' . '/app/Http/Filters/ProductFilter.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\CartNotEmpty' => __DIR__ . '/../..' . '/app/Http/Middleware/CartNotEmpty.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -602,6 +610,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\Auth\\ResetPasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/ResetPasswordRequest.php',
         'App\\Http\\Requests\\Auth\\SignUpRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/SignUpRequest.php',
+        'App\\Http\\Requests\\CartRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CartRequest.php',
         'App\\Http\\Requests\\Catalog\\FilterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Catalog/FilterRequest.php',
         'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
@@ -6887,6 +6896,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\Catalog\\IndexTest' => __DIR__ . '/../..' . '/tests/Feature/Catalog/IndexTest.php',
         'Tests\\Feature\\IndexTest' => __DIR__ . '/../..' . '/tests/Feature/IndexTest.php',
+        'Tests\\Feature\\Product\\ShowTest' => __DIR__ . '/../..' . '/tests/Feature/Product/ShowTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',

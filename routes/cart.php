@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Cart\AddController;
+use App\Http\Controllers\Cart\IndexController;
 
-Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::name('cart.')->prefix('cart')->group(function () {
+    Route::middleware('cartNotEmpty')->group(function () {
+        Route::get('/', IndexController::class)->name('index');
+    });
+    Route::post('/add/{product}', AddController::class)->name('add');
+});

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cart extends Model
 {
@@ -17,10 +18,22 @@ class Cart extends Model
         'price',
         'quantity',
         'product_id',
+        'optionValueIds',
     ];
 
-    public function products(): BelongsTo
+    protected $casts = [
+        'optionValueIds' => 'array'
+    ];
+
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+
+    public function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value / 100
+        );
     }
 }

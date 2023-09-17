@@ -14,7 +14,7 @@ return new class extends BaseMigration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('github_id');
+            $table->string('github_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

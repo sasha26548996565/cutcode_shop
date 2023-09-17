@@ -14,6 +14,7 @@ return new class extends BaseMigration
             $table->string('session_id'); 
             $table->unsignedBigInteger('price');
             $table->integer('quantity');
+            $table->json('optionValueIds');
 
             $table->foreignIdFor(Product::class)
                 ->constrained()
