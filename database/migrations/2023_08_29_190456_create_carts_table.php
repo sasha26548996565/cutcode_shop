@@ -2,6 +2,7 @@
 
 use App\CustomMigrations\BaseMigration;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -17,6 +18,12 @@ return new class extends BaseMigration
             $table->json('optionValueIds');
 
             $table->foreignIdFor(Product::class)
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->foreignIdFor(User::class)
+                ->nullable()
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();

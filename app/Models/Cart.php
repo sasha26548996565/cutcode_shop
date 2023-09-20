@@ -18,6 +18,7 @@ class Cart extends Model
         'price',
         'quantity',
         'product_id',
+        'user_id',
         'optionValueIds',
     ];
 
@@ -35,5 +36,10 @@ class Cart extends Model
         return Attribute::make(
             get: fn ($value) => $value / 100
         );
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

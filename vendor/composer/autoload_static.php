@@ -38,8 +38,9 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
-        '2e6797692b370bc133ce6c1562c5c439' => __DIR__ . '/../..' . '/app/Helpers/getTotalPrice.php',
-        'dcbd9119a37a488cf0cdd811e435fcf7' => __DIR__ . '/../..' . '/app/Helpers/getTotalQuantity.php',
+        'd0aa12f366ac40df614cc1a1722aede4' => __DIR__ . '/../..' . '/app/Helpers/Cart/getTotalPrice.php',
+        '4bc5a53799273c523f10947b3d3adea9' => __DIR__ . '/../..' . '/app/Helpers/Cart/getTotalQuantity.php',
+        'e2c32372c5ef62a850c4ce16ec148716' => __DIR__ . '/../..' . '/app/Helpers/Cart/getCurrentCountProductInCart.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -578,6 +579,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\CustomMigrations\\BaseMigration' => __DIR__ . '/../..' . '/app/CustomMigrations/BaseMigration.php',
         'App\\DTO\\CartDTO' => __DIR__ . '/../..' . '/app/DTO/CartDTO.php',
         'App\\DTO\\FilterDTO' => __DIR__ . '/../..' . '/app/DTO/FilterDTO.php',
+        'App\\Events\\UserRegistered' => __DIR__ . '/../..' . '/app/Events/UserRegistered.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -612,6 +614,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Http\\Requests\\Auth\\SignUpRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/SignUpRequest.php',
         'App\\Http\\Requests\\CartRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CartRequest.php',
         'App\\Http\\Requests\\Catalog\\FilterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Catalog/FilterRequest.php',
+        'App\\Listeners\\AddRegisteredUserToCart' => __DIR__ . '/../..' . '/app/Listeners/AddRegisteredUserToCart.php',
         'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
@@ -625,6 +628,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Models\\Property' => __DIR__ . '/../..' . '/app/Models/Property.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Observers\\BrandObserver' => __DIR__ . '/../..' . '/app/Observers/BrandObserver.php',
+        'App\\Observers\\CartObserver' => __DIR__ . '/../..' . '/app/Observers/CartObserver.php',
         'App\\Observers\\CategoryObserver' => __DIR__ . '/../..' . '/app/Observers/CategoryObserver.php',
         'App\\Observers\\ProductObserver' => __DIR__ . '/../..' . '/app/Observers/ProductObserver.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
