@@ -18,8 +18,7 @@ class IndexController extends Controller
             ->with(['product', 'product.optionValues.option'])
             ->get();
 
-        $totalPrice = $cart
-            ->sum('price') / 100;
+        $totalPrice = $cart->sum('price');
 
         return view('cart.index', compact(
             'cart',

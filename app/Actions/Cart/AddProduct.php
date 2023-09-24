@@ -17,7 +17,6 @@ class AddProduct
             return false;
         }
 
-        $totalPrice = ($product->price * 100) * $params->quantity;
         $cart = Cart::where([
             'session_id' => session()->getId(),
             'product_id' => $product->id
@@ -26,7 +25,6 @@ class AddProduct
         if ($cart)
         {
             $cart->update([
-                'price' => $totalPrice,
                 ...$params->toArray()
             ]);
             return $cart;
@@ -35,7 +33,6 @@ class AddProduct
         $cart = Cart::create([
             'session_id' => session()->getId(),
             'product_id' => $product->id,
-            'price' => $totalPrice,
             ...$params->toArray()
         ]);
 
