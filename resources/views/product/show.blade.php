@@ -62,7 +62,7 @@
                 </ul>
                 <div class="flex items-baseline gap-4 mt-4">
                     <div class="text-pink text-lg md:text-xl font-black">{{ $product->price }} ₽</div>
-                    <div class="text-body text-md md:text-lg font-bold line-through"></div>
+                    <div class="text-body text-md md:text-lg font-black">Осталось: {{ $product->count }}</div>
                 </div>
                 <ul class="sm:max-w-[360px] space-y-2 mt-8">
                     @foreach ($product->properties as $property)

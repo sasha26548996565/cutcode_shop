@@ -7,11 +7,8 @@ if (function_exists('getTotalQuantity') == false)
 {
     function getTotalQuantity(): int
     {
-        if (Auth::user() == null)
-        {
-            return Cart::where('session_id', session()->getId())->sum('quantity');
-        }
-
-        return Cart::where('user_id', Auth::user()->id)->sum('quantity');
+        return Cart::where('session_id', session()->getId())
+            ->orWhere('user_id', optional(Auth::user())->id)
+            ->sum('quantity');
     }
 }

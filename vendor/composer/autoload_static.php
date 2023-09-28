@@ -41,6 +41,7 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'd0aa12f366ac40df614cc1a1722aede4' => __DIR__ . '/../..' . '/app/Helpers/Cart/getTotalPrice.php',
         '4bc5a53799273c523f10947b3d3adea9' => __DIR__ . '/../..' . '/app/Helpers/Cart/getTotalQuantity.php',
         'e2c32372c5ef62a850c4ce16ec148716' => __DIR__ . '/../..' . '/app/Helpers/Cart/getCurrentCountProductInCart.php',
+        '6890cfa479aba23ae2a9fa48e11ec906' => __DIR__ . '/../..' . '/app/Helpers/Cart/getCurrentCart.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -588,6 +589,8 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Http\\Controllers\\Auth\\SignUpController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/SignUpController.php',
         'App\\Http\\Controllers\\Auth\\Socialites\\GitHubController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/Socialites/GitHubController.php',
         'App\\Http\\Controllers\\Cart\\AddController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/AddController.php',
+        'App\\Http\\Controllers\\Cart\\DecrementController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/DecrementController.php',
+        'App\\Http\\Controllers\\Cart\\IncrementController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/IncrementController.php',
         'App\\Http\\Controllers\\Cart\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Cart/IndexController.php',
         'App\\Http\\Controllers\\Catalog\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Catalog/IndexController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -613,6 +616,8 @@ class ComposerStaticInit37822db978a2e6981157272f9c85e05b
         'App\\Http\\Requests\\Auth\\ResetPasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/ResetPasswordRequest.php',
         'App\\Http\\Requests\\Auth\\SignUpRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/SignUpRequest.php',
         'App\\Http\\Requests\\CartRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CartRequest.php',
+        'App\\Http\\Requests\\Cart\\DecrementRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Cart/DecrementRequest.php',
+        'App\\Http\\Requests\\Cart\\IncrementRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Cart/IncrementRequest.php',
         'App\\Http\\Requests\\Catalog\\FilterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Catalog/FilterRequest.php',
         'App\\Listeners\\AddRegisteredUserToCart' => __DIR__ . '/../..' . '/app/Listeners/AddRegisteredUserToCart.php',
         'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',

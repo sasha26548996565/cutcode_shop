@@ -40,4 +40,5 @@ return array(
     'd0aa12f366ac40df614cc1a1722aede4' => $baseDir . '/app/Helpers/Cart/getTotalPrice.php',
     '4bc5a53799273c523f10947b3d3adea9' => $baseDir . '/app/Helpers/Cart/getTotalQuantity.php',
     'e2c32372c5ef62a850c4ce16ec148716' => $baseDir . '/app/Helpers/Cart/getCurrentCountProductInCart.php',
+    '6890cfa479aba23ae2a9fa48e11ec906' => $baseDir . '/app/Helpers/Cart/getCurrentCart.php',
 );

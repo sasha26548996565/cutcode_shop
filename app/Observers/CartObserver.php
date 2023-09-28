@@ -12,7 +12,7 @@ class CartObserver
     public function creating(Cart $cart): void
     {
         $cart->load('product');
-        $cart->price = $this->getTotalPrice((int) $cart->product->price * 100, $cart->quantity);
+        $cart->price = (int)($cart->product->price * 100) * $cart->quantity;
 
         if (Auth::user() != null)
         {
@@ -23,16 +23,11 @@ class CartObserver
     public function updating(Cart $cart): void
     {
         $cart->load('product');
-        $cart->price = $this->getTotalPrice((int) $cart->product->price * 100, $cart->quantity);
+        $cart->price = (int)($cart->product->price * 100) * $cart->quantity;
         
         if (is_null($cart->user_id) && Auth::user() != null)
         {            
             $cart->user_id = Auth::user()->id;
         }
-    }
-
-    private function getTotalPrice(int $price, int $quantity): int
-    {
-        return $price * $quantity;
     }
 }

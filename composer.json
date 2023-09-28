@@ -40,7 +40,8 @@
         "files": [
             "app/Helpers/Cart/getTotalPrice.php",
             "app/Helpers/Cart/getTotalQuantity.php",
-            "app/Helpers/Cart/getCurrentCountProductInCart.php"
+            "app/Helpers/Cart/getCurrentCountProductInCart.php",
+            "app/Helpers/Cart/getCurrentCart.php"
         ]
     },
     "scripts": {

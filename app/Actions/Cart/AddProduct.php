@@ -10,17 +10,14 @@ use App\Models\Product;
 
 class AddProduct
 {
-    public function handle(Product $product, CartDTO $params): bool|Cart
+    public function handle(Product $product, CartDTO $params): false|Cart
     {
         if ($params->quantity > $product->count)
         {
             return false;
         }
 
-        $cart = Cart::where([
-            'session_id' => session()->getId(),
-            'product_id' => $product->id
-        ])->first();
+        $cart = getCurrentCart($product->id);
 
         if ($cart)
         {
