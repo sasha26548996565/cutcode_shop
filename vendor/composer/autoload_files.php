@@ -37,8 +37,10 @@ return array(
     'a1cfe24d14977df6878b9bf804af2d1c' => $vendorDir . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
     'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     '320163ac6b93aebe3dc25b60a0533d56' => $vendorDir . '/spatie/laravel-ignition/src/helpers.php',
-    'd0aa12f366ac40df614cc1a1722aede4' => $baseDir . '/app/Helpers/Cart/getTotalPrice.php',
-    '4bc5a53799273c523f10947b3d3adea9' => $baseDir . '/app/Helpers/Cart/getTotalQuantity.php',
     'e2c32372c5ef62a850c4ce16ec148716' => $baseDir . '/app/Helpers/Cart/getCurrentCountProductInCart.php',
     '6890cfa479aba23ae2a9fa48e11ec906' => $baseDir . '/app/Helpers/Cart/getCurrentCart.php',
+    '49d17d8ccb74f5e228acd05a66eabcce' => $baseDir . '/app/Helpers/Cart/issetProductInCart.php',
+    '5482078b119c8751f74b0bbdd53577fe' => $baseDir . '/app/Helpers/Wishlist/getTotalPrice.php',
+    '65e46bff0e5ba4563b927a307a9affdf' => $baseDir . '/app/Helpers/Wishlist/getTotalQuantity.php',
+    '9aa7361864312838c2769b58f8097328' => $baseDir . '/app/Helpers/Wishlist/hasLikeProductBySession.php',
 );
