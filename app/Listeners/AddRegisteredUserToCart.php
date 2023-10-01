@@ -11,17 +11,12 @@ class AddRegisteredUserToCart
 {
     public function handle(object $event): void
     {
-        $items = $this->getItems();
+        $items = Cart::where('session_id', session()->getId())->get();
 
         if ($items->isNotEmpty()) {
             $items->each(function ($item) use ($event) {
                 $item->update(['user_id' => $event->user->id]);
             });
         }
-    }
-
-    private function getItems(): Collection
-    {
-        return Cart::where('session_id', session()->getId())->get();
     }
 }

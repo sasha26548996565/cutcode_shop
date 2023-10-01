@@ -25,6 +25,8 @@ class RouteServiceProvider extends ServiceProvider
         'routes/catalog.php',
         'routes/cart.php',
         'routes/wishlist.php',
+        'routes/checkout.php',
+        'routes/order.php',
     ];
 
     public function boot(): void

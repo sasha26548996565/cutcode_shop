@@ -19,14 +19,12 @@ return new class extends BaseMigration
 
             $table->foreignIdFor(Product::class)
                 ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
 
             $table->foreignIdFor(User::class)
                 ->nullable()
                 ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

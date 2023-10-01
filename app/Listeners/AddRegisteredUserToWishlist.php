@@ -19,9 +19,4 @@ class AddRegisteredUserToWishlist
             });
         }
     }
-
-    private function getItems(): Collection
-    {
-        return Wishlist::where('session_id', session()->getId())->get();
-    }
 }
