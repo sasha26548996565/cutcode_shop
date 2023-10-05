@@ -33,25 +33,27 @@
                     <input type="email" name="email" value="{{ old('email') }}"
                         class="w-full h-16 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
                         placeholder="E-mail" required>
-                    <div x-data="{ createAccount: false }">
-                        <div class="py-3 text-body">Вы можете создать аккаунт после оформления заказа</div>
-                        <div class="form-checkbox">
-                            <input type="checkbox" id="checkout-create-account">
-                            <label for="checkout-create-account" class="form-checkbox-label"
-                                @click="createAccount = ! createAccount">Зарегистрировать аккаунт</label>
+                    @guest
+                        <div x-data="{ createAccount: false }">
+                            <div class="py-3 text-body">Вы можете создать аккаунт после оформления заказа</div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="checkout-create-account">
+                                <label for="checkout-create-account" class="form-checkbox-label"
+                                    @click="createAccount = ! createAccount">Зарегистрировать аккаунт</label>
+                            </div>
+                            <div x-show="createAccount" x-transition:enter="ease-out duration-300"
+                                x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100"
+                                x-transition:leave-end="opacity-0" class="mt-4 space-y-3">
+                                <input type="password" name="password"
+                                    class="w-full h-16 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
+                                    placeholder="Придумайте пароль">
+                                <input type="password" name="password_confirmation"
+                                    class="w-full h-16 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
+                                    placeholder="Повторите пароль">
+                            </div>
                         </div>
-                        <div x-show="createAccount" x-transition:enter="ease-out duration-300"
-                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                            x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100"
-                            x-transition:leave-end="opacity-0" class="mt-4 space-y-3">
-                            <input type="password" name="password"
-                                class="w-full h-16 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
-                                placeholder="Придумайте пароль">
-                            <input type="password" name="password_confirmation"
-                                class="w-full h-16 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
-                                placeholder="Повторите пароль">
-                        </div>
-                    </div>
+                    @endguest
                 </div>
             </div>
 
