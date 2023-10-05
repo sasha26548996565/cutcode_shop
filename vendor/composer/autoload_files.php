@@ -43,6 +43,7 @@ return array(
     '49d17d8ccb74f5e228acd05a66eabcce' => $baseDir . '/app/Helpers/Cart/issetProductInCart.php',
     '76dc7dd66db9549b869d39a5f0cb80d0' => $baseDir . '/app/Helpers/Cart/getTotalPriceInCart.php',
     '5482078b119c8751f74b0bbdd53577fe' => $baseDir . '/app/Helpers/Wishlist/getTotalPrice.php',
+    '7357c81ea334a9d5f2ba4f5a16095657' => $baseDir . '/app/Helpers/Wishlist/getWishlist.php',
     '65e46bff0e5ba4563b927a307a9affdf' => $baseDir . '/app/Helpers/Wishlist/getTotalQuantity.php',
     '9aa7361864312838c2769b58f8097328' => $baseDir . '/app/Helpers/Wishlist/hasLikeProductBySession.php',
 );

@@ -44,6 +44,7 @@
             "app/Helpers/Cart/issetProductInCart.php",
             "app/Helpers/Cart/getTotalPriceInCart.php",
             "app/Helpers/Wishlist/getTotalPrice.php",
+            "app/Helpers/Wishlist/getWishlist.php",
             "app/Helpers/Wishlist/getTotalQuantity.php",
             "app/Helpers/Wishlist/hasLikeProductBySession.php"
         ]
