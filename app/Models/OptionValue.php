@@ -25,6 +25,13 @@ class OptionValue extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'option_value_products', 'option_values_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'option_value_products', 'option_value_id', 'product_id')
+            ->withPivot('count')
+            ->withPivot('price');
+    }
+
+    public function getPivotByProduct(int $productId, string $field): mixed
+    {
+        return $this->products()->find($productId)->pivot?->{$field};
     }
 }

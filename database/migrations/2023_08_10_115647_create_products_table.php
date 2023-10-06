@@ -2,6 +2,7 @@
 
 use App\Models\Brand;
 use App\CustomMigrations\BaseMigration;
+use App\Models\Group;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -15,6 +16,7 @@ return new class extends BaseMigration
             $table->string('slug')->unique();
             $table->string('thumbnail');
             $table->unsignedBigInteger('price');
+            $table->integer('count');
             $table->text('text')->fullText();
 
             $table->foreignIdFor(Brand::class)

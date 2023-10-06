@@ -22,7 +22,9 @@ class CategorySeeder extends Seeder
         Category::factory(20)
             ->has(
                 Product::factory(random_int(1, 3))->hasAttached($properties, function () {
-                    return ['value' => ucfirst(fake()->word())];
+                    return [
+                        'value' => ucfirst(fake()->word())
+                    ];
                 })
                 ->hasAttached($optionValues)
             )->hasAttached($options)

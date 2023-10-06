@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(OptionSeeder::class);
         $this->call(OptionValueSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(PromocodeSeeder::class);
     }
 }
