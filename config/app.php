@@ -160,6 +160,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\RouteServiceProvider::class,
+        App\Providers\MoonShineServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
 
         /*
