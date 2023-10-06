@@ -88,7 +88,7 @@ class StoreOrder
 
     private function getTotalPrice(?string $namePromocode): int
     {
-        $totalPrice = getTotalPriceInCart();
+        $totalPrice = getTotalPriceInCart() * 100;
         $promocode = Promocode::where('name', $namePromocode)->first();
         
         if ($promocode)
