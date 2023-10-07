@@ -31,6 +31,8 @@ class ProductResource extends Resource
         'properties',
     ];
 
+    public string $titleField = 'title';
+
 	public function fields(): array
 	{
 		return [
