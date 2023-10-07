@@ -6,20 +6,22 @@ use App\Models\Brand;
 use App\Models\Option;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\OptionValue;
 use App\Models\Property;
 use MoonShine\MoonShine;
+use App\Models\OptionValue;
 use MoonShine\Menu\MenuItem;
 use MoonShine\Menu\MenuGroup;
+use App\Models\ProductProperty;
 use Illuminate\Support\ServiceProvider;
 use App\MoonShine\Resources\BrandResource;
 use App\MoonShine\Resources\OptionResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\CategoryResource;
+use App\MoonShine\Resources\PropertyResource;
 use MoonShine\Resources\MoonShineUserResource;
 use App\MoonShine\Resources\OptionValueResource;
-use App\MoonShine\Resources\PropertyResource;
 use MoonShine\Resources\MoonShineUserRoleResource;
+use App\MoonShine\Resources\PropertyProductsResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -57,6 +59,10 @@ class MoonShineServiceProvider extends ServiceProvider
 
             MenuItem::make('Property', new PropertyResource())
                 ->badge(fn () => Property::count())
+                ->icon('heroicons.briefcase'),
+
+            MenuItem::make('Property Values', new PropertyProductsResource())
+                ->badge(fn () => ProductProperty::count())
                 ->icon('heroicons.briefcase'),
         ]);
     }
